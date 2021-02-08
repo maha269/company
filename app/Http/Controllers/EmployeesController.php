@@ -18,7 +18,7 @@ class EmployeesController extends Controller
      */
     public function index()
     {
-        $employees = User::with('company')->paginate(10);
+        $employees = User::paginate(10);
         return view('employees.index',compact('employees'));
     }
 
