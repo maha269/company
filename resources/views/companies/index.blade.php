@@ -39,7 +39,13 @@
                             <td>{{$company->created_at}}</td>
                             <td>
                                 <a href="{{route('company.edit',['company'=>$company->id])}}">Edit</a>
-                                <a href="{{route('company.destroy',['company'=>$company->id])}}">Delete</a>
+                                <form method="post" action="{{route('company.destroy',['company'=>$company->id])}}">
+                                    @csrf
+                                    @method('delete')
+                                    <div class="form-group">
+                                        <button type="submit">Delete</button>
+                                    </div>
+                                </form>
                             </td>
                         </tr>
 

@@ -78,7 +78,10 @@ class EmployeesController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('employees.edit',[
+            'employee'=>User::find($id),
+            'companies'=>Company::all()
+        ]);
     }
 
     /**
@@ -90,7 +93,20 @@ class EmployeesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'company'=>'required',
+        ]);
+        $newCompany = User::where('id','=',$id)->update([
+            'name'=>$request->name,
+            'company_id'=>$request->company,
+            'created_at'=>Carbon::now(),
+        ]);
+        if(!$newCompany){
+            Session::flash('alert-danger','Error updating employee');
+        }
+        Session::flash('alert-success','Employee updated successfully');
+        return redirect()->route('employee.index');
     }
 
     /**
@@ -101,6 +117,7 @@ class EmployeesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::where('id','=',$id)->delete();
+        return redirect()->route('employee.index');
     }
 }

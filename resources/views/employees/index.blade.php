@@ -40,7 +40,13 @@
                             <td>{{$employee->created_at}}</td>
                             <td>
                                 <a href="{{route('employee.edit',['employee'=>$employee->id])}}">Edit</a>
-                                <a href="{{route('employee.destroy',['employee'=>$employee->id])}}">Delete</a>
+                                <form method="post" action="{{route('employee.destroy',['employee'=>$employee->id])}}">
+                                    @csrf
+                                    @method('delete')
+                                    <div class="form-group">
+                                        <button type="submit">Delete</button>
+                                    </div>
+                                </form>
                             </td>
                         </tr>
                     @endforeach

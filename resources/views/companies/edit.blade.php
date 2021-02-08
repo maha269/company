@@ -5,8 +5,9 @@
             <h4>create company</h4>
         </div>
         <div class="card-body">
-            <form method="post" action="{{route('company.update',['id'=>$company->id])}}">
+            <form method="post" action="{{route('company.update',['company'=>$company->id])}}">
                 @csrf
+                @method('patch')
                 <div class="form-group">
                     <input type="text" class="form-control" name="name" value="{{$company->name}}">
                 </div>
