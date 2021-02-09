@@ -36,7 +36,7 @@
                         <tr>
                             <th scope="row">{{$employee->id}}</th>
                             <td colspan="2" class="table-active">{{$employee->name}}</td>
-                            <td colspan="2" class="table-active">{{$employee->company->name}}</td>
+                            <td colspan="2" class="table-active">{{$employee->company ? $employee->company->name : ""}}</td>
                             <td>{{$employee->created_at}}</td>
                             <td>
                                 <a href="{{route('employee.edit',['employee'=>$employee->id])}}">Edit</a>

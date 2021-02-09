@@ -57,6 +57,34 @@
                 </table>
 
             </div>
+        </div><br>
+        <div class="card">
+            <div class="form-group">
+                <label> Select company to view employees </label>
+                <select class="form-select" aria-label="Default select example" id="selected-company">
+                    @foreach($companies as $company)
+                        <option value="{{$company->id}}">{{$company->name}}</option>
+                    @endforeach
+                </select>
+                <br>
+                <table class="table table-dark ">
+                    <thead>
+                    <tr>
+                        <th scope="row">Employee ID</th>
+                        <td colspan="2" class="table-active"> Employee Name</td>
+                        <td>Employee Creation Date</td>
+                    </tr>
+                    </thead>
+                </table>
+                <table class="table table-dark " id="employees-table">
+                    <tbody id="employee-tbody">
+
+                    </tbody>
+                </table>
+
+            </div>
         </div>
+
+
     </div>
 @endsection

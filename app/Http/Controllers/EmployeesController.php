@@ -120,4 +120,9 @@ class EmployeesController extends Controller
         User::where('id','=',$id)->delete();
         return redirect()->route('employee.index');
     }
+    public function getEmployees($id)
+    {
+        $employees = User::where('company_id','=',$id)->get();
+        return response()->json($employees);
+    }
 }

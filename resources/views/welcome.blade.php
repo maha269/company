@@ -35,7 +35,7 @@
                     @endauth
                 </div>
             @endif
-
+            <a href="{{route('company.index')}}">Go to Companies</a>
         </div>
     </body>
 </html>

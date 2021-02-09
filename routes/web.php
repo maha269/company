@@ -24,3 +24,4 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 Route::resource('employee', \App\Http\Controllers\EmployeesController::class);
 Route::resource('company', \App\Http\Controllers\CompaniesController::class);
+Route::get('/company/employees/{id}', [\App\Http\Controllers\EmployeesController::class,'getEmployees'])->name('getEmployees');

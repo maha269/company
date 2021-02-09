@@ -16,4 +16,12 @@ class Company extends Model
     public function employees(){
         return $this->hasMany(User::class);
     }
+    public static function boot() {
+        parent::boot();
+
+            static::deleting(function($user) { // before delete() method call this
+            $user->photos()->delete();
+            // do the rest of the cleanup...
+        });
+    }
 }
